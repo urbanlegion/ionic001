@@ -1,20 +1,23 @@
 (function () {
   'use strict';
 
-  angular.module('eliteChat').controller('TeamDetailCtrl', ['$stateParams','eliteApi', TeamDetailCtrl]);
+  angular.module('eliteChat').controller('TeamDetailCtrl', ['$stateParams', '$ionicPopup', 'eliteApi', TeamDetailCtrl]);
 
-  function TeamDetailCtrl($stateParams, eliteApi) {
+  function TeamDetailCtrl($stateParams, $ionicPopup, eliteApi) {
     var vm = this;
-
-    console.log("$stateParams", $stateParams);
+console.log("$stateParams" , $stateParams);
+    //console.log("$stateParams", $stateParams);
     vm.teamId = Number($stateParams.id);
+
     var data = eliteApi.getLeagueData();
+
+    console.log('data.teams:', data.teams);
 
     var team = _.chain(data.teams)
       .flatten("divisionTeams")
       .find({ "id": vm.teamId })
-      .value();
-
+      /*.value()*/;
+    console.log('team:',team);
     vm.teamName = team.name;
 
     vm.games = _.chain(data.games)
@@ -75,6 +78,6 @@
         return "";
       }
     }
-  }
+  };
 })();
 

@@ -14,12 +14,12 @@ console.log("$stateParams" , $stateParams);
     console.log('data.teams:', data.teams);
 
     var team = _.chain(data.teams)
-      .flatten("divisionTeams")
+      .flatten("divisionName")
       .find({ "id": vm.teamId })
       /*.value()*/;
-    console.log('team:',team);
-    vm.teamName = team.name;
 
+    vm.teamName = team.name;
+    console.log('team.name:',team.name);
     vm.games = _.chain(data.games)
       .filter(isTeamInGame)
       .map(function (item) {

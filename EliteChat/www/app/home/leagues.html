@@ -1,4 +1,4 @@
-<ion-view ng-controller="LeaguesCtrl as vm">
+<ion-view  ng-controller="LeaguesCtrl as vm" title="liga alef">
   <ion-content class="has-header">
     <div class="list">
       <a class="item item-icon-right" ng-repeat="league in vm.leagues" ng-click="vm.selectLeague(league.id)">
@@ -6,6 +6,5 @@
         <i class="icon ion-chevron-right icon-accessory"></i>
       </a>
     </div>
-    <h1>Leagues</h1>
   </ion-content>
 </ion-view>
